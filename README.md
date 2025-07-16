@@ -8,15 +8,15 @@ This project demonstrates how to use environment variables to securely manage se
 langchain-demo/
 ├── .env                        # Store secrets like API keys (not committed to git)
 ├── .gitignore                  # Ignore .env and other sensitive files
-├── sample_openai_key.ipynb     # Jupyter notebook example
-├── restaurant_name_generator.ipynb # Restaurant name generator notebook
+├── 01_hello_world_openai.ipynb     # Hello world example to connect to openai
+├── 02_restaurant_name_generator.ipynb # Restaurant name generator notebook
 └── ...                         # Other project files
 ```
 
 ## Setup Instructions
 ## Restaurant Name Generator Notebook
 
-The `restaurant_name_generator.ipynb` notebook demonstrates how to use LangChain and OpenAI to generate creative restaurant names based on a given cuisine type.
+The `02_restaurant_name_generator.ipynb` notebook demonstrates how to use LangChain and OpenAI to generate creative restaurant names based on a given cuisine type.
 
 ### How it works
 - Loads your OpenAI API key securely from the `.env` file using `python-dotenv`.
@@ -33,7 +33,7 @@ The `restaurant_name_generator.ipynb` notebook demonstrates how to use LangChain
    ```
    pip install -r requirements.txt
    ```
-3. Open `restaurant_name_generator.ipynb` in Jupyter and run the cells.
+3. Open `02_restaurant_name_generator.ipynb` in Jupyter and run the cells.
 4. Enter a cuisine type when prompted to receive a suggested restaurant name.
 
 ### 1. Clone the Repository
@@ -51,6 +51,7 @@ source venv/bin/activate
 ### 3. Install Required Packages
 ```bash
 pip install -r requirements.txt
+nbstripout --install
 ```
 
 ### 4. Add Your Secrets
@@ -64,6 +65,9 @@ OPENAI_API_KEY=your_openai_api_key_here
 ## Security Best Practices
 - Always add `.env` to `.gitignore`.
 - Never share or commit secrets to version control.
+- Use [`nbstripout`](https://github.com/kynan/nbstripout) to automatically remove Jupyter notebook outputs before committing to git. This keeps your notebooks clean and prevents accidental sharing of sensitive outputs.
+  - Enable for your repo: `nbstripout --install`
+  - Notebook outputs will now be stripped automatically on commit.
 
 ## Troubleshooting
 - If you update `.env`, restart your Jupyter kernel to reload variables.
